@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import "../styles/Hero.css";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -49,9 +50,11 @@ function Hero() {
               Start Exploring
             </button>
 
-            <button className="secondary-btn">
-              View Subjects
-            </button>
+            <Link to="/subjects">
+              <button className="secondary-btn">
+                View Subjects
+              </button>
+            </Link>
           </div>
 
         </div>

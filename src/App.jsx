@@ -1,26 +1,32 @@
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./sections/Navbar";
-import Hero from "./sections/Hero";
-import Features from "./sections/Features";
-import Subjects from "./sections/Subjects";
-import Preview from "./sections/Preview";
-import Testimonials from "./sections/Testimonials";
-import Roadmap from "./sections/Roadmap";
-import CTA from "./sections/CTA";
-import Footer from "./sections/Footer";
+
+import Home from "./pages/Home";
+import SubjectsPage from "./pages/SubjectsPage";
+import SubjectDetail from "./pages/SubjectDetail";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      <Hero />
-      <Features />
-      <Roadmap />
-      <Preview />
-      <Testimonials />
-      <CTA />
-      <Footer />
-     
-    </div>
+
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+
+        <Route
+          path="/subjects"
+          element={<SubjectsPage />}
+        />
+
+        <Route
+          path="/subjects/:subjectId"
+          element={<SubjectDetail />}
+        />
+
+      </Routes>
+    </>
   );
 }
 

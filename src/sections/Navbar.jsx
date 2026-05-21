@@ -1,5 +1,6 @@
 import "../styles/Navbar.css";
 import { Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -13,20 +14,31 @@ function Navbar() {
         </h1>
 
         {/* Links */}
-        <ul className="nav-links">
+      <ul className="nav-links">
 
-          <li>Home</li>
-          <li>Subjects</li>
-          <li>Visualizer</li>
-          <li>Roadmap</li>
-          <li>About</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
 
-        </ul>
+        <li>
+          <Link to="/subjects">Subjects</Link>
+        </li>
 
-        {/* Button */}
-        <button className="nav-btn">
-          Start Learning
-        </button>
+        <li>
+          <Link to="/">Visualizer</Link>
+        </li>
+
+        <li>
+          <Link to="/">Roadmap</Link>
+        </li>
+
+        <li>
+          <Link to="/">About</Link>
+        </li>
+
+      </ul>
+
+ 
 
         {/* Mobile Icon */}
         <div className="menu-icon">
