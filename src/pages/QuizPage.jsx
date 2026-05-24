@@ -141,7 +141,7 @@ function QuizPage() {
 
           await axios.post(
 
-            "http://cse-visualizer.onrender.com/api/topic-progress/update",
+            "https://cse-visualizer.onrender.com/api/topic-progress/update",
 
             {
 

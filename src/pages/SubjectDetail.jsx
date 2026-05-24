@@ -61,7 +61,7 @@ function SubjectDetail() {
         const res =
           await axios.get(
 
-            `http://cse-visualizer.onrender.com/api/topic-progress/${subjectId}`,
+            `https://cse-visualizer.onrender.com/api/topic-progress/${subjectId}`,
 
             {
 

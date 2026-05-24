@@ -47,7 +47,7 @@ function ProgressPage() {
                 const res =
                   await axios.get(
 
-                    `http://cse-visualizer.onrender.com/api/topic-progress/${subject.id}`,
+                    `https://cse-visualizer.onrender.com/api/topic-progress/${subject.id}`,
 
                     {
 

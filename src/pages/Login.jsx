@@ -43,7 +43,7 @@ function Login() {
     try {
 
       const res = await axios.post(
-        "http://cse-visualizer.onrender.com/api/auth/login",
+        "https://cse-visualizer.onrender.com/api/auth/login",
         formData
       );
 
