@@ -65,7 +65,7 @@ function Signup() {
     try {
 
       await axios.post(
-        "http://localhost:8000/api/auth/signup",
+        "http://cse-visualizer.onrender.com/api/auth/signup",
         formData
       );
 
