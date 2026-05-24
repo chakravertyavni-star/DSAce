@@ -76,14 +76,7 @@ function Login() {
       <div className="auth-overlay"></div>
 
       {/* QUOTE */}
-
-      <div className="auth-quote">
-
-        <span>
-          “Small steps every day build legendary careers.”
-        </span>
-
-      </div>
+ 
 
       {/* CARD */}
 

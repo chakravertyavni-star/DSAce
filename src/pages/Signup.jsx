@@ -93,16 +93,9 @@ function Signup() {
     <div className="auth-page">
 
       <div className="auth-overlay"></div>
+ 
 
-      {/* QUOTE */}
-
-      <div className="auth-quote">
-
-        <span>
-          “Discipline compounds faster than talent.”
-        </span>
-
-      </div>
+ 
 
       {/* CARD */}
 
