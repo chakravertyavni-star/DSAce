@@ -1,4 +1,5 @@
 import "../styles/CTA.css";
+import { Link } from "react-router-dom";
 
 function CTA() {
   return (
@@ -20,11 +21,11 @@ function CTA() {
           Learn Computer Science visually through simulations,
           animations and interactive experiences.
         </span>
-      <link to="/subjects">
+      <Link to="/subjects">
         <button>
           Start Learning Now
         </button>
-      </link>
+      </Link>
 
       </div>
 
