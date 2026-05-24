@@ -1,111 +1,206 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+
+import {
+  useState,
+  useEffect
+} from "react";
+
+import axios from "axios";
 
 import "../styles/SubjectDetail.css";
 
-const subjectTopics = {
-  dsa: [
-    "Arrays",
-    "Linked Lists",
-    "Stacks",
-    "Queues",
-    "Trees",
-    "Graphs",
-    "Hashing",
-    "Heap",
-    "Recursion",
-    "Dynamic Programming",
-  ],
-
-  os: [
-    "Processes",
-    "Threads",
-    "CPU Scheduling",
-    "Deadlocks",
-    "Paging",
-    "Virtual Memory",
-    "File Systems",
-  ],
-
-  dbms: [
-    "SQL",
-    "Normalization",
-    "Transactions",
-    "Indexing",
-    "Joins",
-    "Keys",
-  ],
-
-  cn: [
-    "OSI Model",
-    "TCP/IP",
-    "Routing",
-    "DNS",
-    "HTTP",
-  ],
-
-  oop: [
-    "Classes",
-    "Inheritance",
-    "Polymorphism",
-    "Abstraction",
-  ],
-
-  ai: [
-    "Machine Learning",
-    "Neural Networks",
-    "Deep Learning",
-    "Generative AI",
-  ],
-};
-
-const videos = {
-  dsa: "/video1.mp4",
-  os: "/video2.mp4",
-  dbms: "/video3.mp4",
-  cn: "/video4.mp4",
-  oop: "/video5.mp4",
-  ai: "/ai.mp4",
-};
+import subjects from "../data/subjectsData";
 
 function SubjectDetail() {
-  const { subjectId } = useParams();
 
-  const topics = subjectTopics[subjectId] || [];
+  const { subjectId } =
+    useParams();
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const nextSlide = () => {
-    setActiveIndex((prev) =>
-      (prev + 1) % topics.length
+  const subject =
+    subjects.find(
+      (s) =>
+        s.id === subjectId
     );
-  };
 
-  const prevSlide = () => {
-    setActiveIndex((prev) =>
-      (prev - 1 + topics.length) % topics.length
-    );
-  };
+  const topics =
+    subject?.topics || [];
 
-  const getVisibleCards = () => {
-    const cards = [];
+  const video =
+    subject?.video || "";
 
-    for (let i = -2; i <= 2; i++) {
-      const index =
-        (activeIndex + i + topics.length) %
-        topics.length;
+  const [
+    activeIndex,
+    setActiveIndex
+  ] =
+    useState(0);
 
-      cards.push({
-        topic: topics[index],
-        realIndex: index,
-        position: i,
-      });
-    }
+  const [
+    progress,
+    setProgress
+  ] =
+    useState([]);
 
-    return cards;
-  };
+  /* FETCH PROGRESS */
+
+  useEffect(() => {
+
+    fetchProgress();
+
+  }, [subjectId]);
+
+  const fetchProgress =
+    async () => {
+
+      try {
+
+        const token =
+          localStorage.getItem(
+            "token"
+          );
+
+        const res =
+          await axios.get(
+
+            `http://localhost:8000/api/topic-progress/${subjectId}`,
+
+            {
+
+              headers: {
+
+                Authorization:
+                  `Bearer ${token}`
+
+              }
+
+            }
+
+          );
+
+        setProgress(
+          res.data
+        );
+
+      } catch (
+        error
+      ) {
+
+        console.log(
+          error
+        );
+
+      }
+
+    };
+
+  /* SLIDER */
+
+  const nextSlide =
+    () => {
+
+      setActiveIndex(
+
+        (prev) =>
+
+          (
+            prev + 1
+          ) %
+          topics.length
+
+      );
+
+    };
+
+  const prevSlide =
+    () => {
+
+      setActiveIndex(
+
+        (prev) =>
+
+          (
+            prev -
+            1 +
+            topics.length
+          ) %
+          topics.length
+
+      );
+
+    };
+
+  /* CARDS */
+
+  const getVisibleCards =
+    () => {
+
+      const cards = [];
+
+      for (
+        let i = -2;
+        i <= 2;
+        i++
+      ) {
+
+        const index =
+
+          (
+            activeIndex +
+            i +
+            topics.length
+          ) %
+          topics.length;
+
+        const currentTopic =
+
+          progress.find(
+
+            (p) =>
+              p.topicName ===
+              topics[index]
+
+          );
+
+        const previousTopic =
+
+          progress.find(
+
+            (p) =>
+              p.topicName ===
+              topics[index - 1]
+
+          );
+
+        const unlocked =
+
+          index === 0 ||
+
+          previousTopic?.quizCompleted;
+
+        cards.push({
+
+          topic:
+            topics[index],
+
+          realIndex:
+            index,
+
+          position:
+            i,
+
+          unlocked,
+
+          currentTopic,
+
+        });
+
+      }
+
+      return cards;
+
+    };
 
   return (
+
     <div className="subject-detail">
 
       {/* VIDEO */}
@@ -117,10 +212,12 @@ function SubjectDetail() {
         playsInline
         className="subject-video-bg"
       >
+
         <source
-          src={videos[subjectId]}
+          src={video}
           type="video/mp4"
         />
+
       </video>
 
       <div className="subject-overlay"></div>
@@ -129,15 +226,21 @@ function SubjectDetail() {
 
       <div className="subject-detail-header">
 
-        <p>SUBJECT ROADMAP</p>
+        <p>
+          SUBJECT ROADMAP
+        </p>
 
         <h1>
-          {subjectId.toUpperCase()}
+          {subject?.title}
         </h1>
 
         <span>
-          Learn through immersive visual experiences,
-          AI explanations and interactive quizzes.
+
+          Learn through immersive
+          visual experiences,
+          AI explanations and
+          interactive quizzes.
+
         </span>
 
       </div>
@@ -159,66 +262,104 @@ function SubjectDetail() {
 
         <div className="carousel-track">
 
-          {getVisibleCards().map((card, index) => (
+          {getVisibleCards().map(
 
-            <div
-              key={index}
-              className={`topic-card pos-${card.position}`}
-            >
+            (
+              card,
+              index
+            ) => (
 
-              <div className="topic-glow"></div>
+              <div
+                key={index}
+                className={`topic-card pos-${card.position}`}
+              >
 
-              <div className="topic-top">
+                <div className="topic-glow"></div>
 
-                <span>
-                  Topic {card.realIndex + 1}
-                </span>
+                <div className="topic-top">
 
-                <p>
-                  {card.realIndex <= 1
-                    ? "IN PROGRESS"
-                    : "LOCKED"}
-                </p>
+                  <span>
 
-              </div>
+                    Topic {
+                      card.realIndex + 1
+                    }
 
-              <div className="topic-center">
+                  </span>
 
-                <h2>{card.topic}</h2>
+                  <p>
 
-              </div>
+                    {card.unlocked
+                      ? "UNLOCKED"
+                      : "LOCKED"}
 
-              <div className="topic-bottom">
-
-                <div className="topic-progress">
-
-                  <div
-                    className="topic-progress-fill"
-                    style={{
-                      width:
-                        card.realIndex === 0
-                          ? "100%"
-                          : card.realIndex === 1
-                          ? "60%"
-                          : "0%",
-                    }}
-                  ></div>
+                  </p>
 
                 </div>
 
-                <button>
+                <div className="topic-center">
 
-                  {card.realIndex <= 1
-                    ? "Continue"
-                    : "Start"}
+                  <h2>
+                    {card.topic}
+                  </h2>
 
-                </button>
+                </div>
+
+                <div className="topic-bottom">
+
+                  <div className="topic-progress">
+
+                    <div
+                      className="topic-progress-fill"
+                      style={{
+
+                        width:
+
+                          card.currentTopic?.quizCompleted
+                            ? "100%"
+
+                            : card.currentTopic?.aiCompleted
+                            ? "50%"
+
+                            : "0%",
+
+                      }}
+                    ></div>
+
+                  </div>
+
+                  <button
+
+                    disabled={
+                      !card.unlocked
+                    }
+
+                    onClick={() => {
+
+                      if (
+                        !card.unlocked
+                      )
+                        return;
+
+                      window.location.href =
+
+                        `/topic/${subjectId}/${encodeURIComponent(card.topic)}`;
+
+                    }}
+
+                  >
+
+                    {card.unlocked
+                      ? "Continue"
+                      : "Locked"}
+
+                  </button>
+
+                </div>
 
               </div>
 
-            </div>
-
-          ))}
+            )
+          )}
 
         </div>
 
@@ -234,6 +375,7 @@ function SubjectDetail() {
       </div>
 
     </div>
+
   );
 }
 

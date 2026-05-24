@@ -1,0 +1,107 @@
+.login-modal-backdrop {
+
+  position: fixed;
+  inset: 0;
+
+  background:
+    rgba(0,0,0,.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.login-modal {
+
+  width: 420px;
+
+  background:
+    rgba(10,10,15,.95);
+
+  border:
+    1px solid rgba(124,58,237,.18);
+
+  border-radius: 30px;
+
+  padding: 35px;
+
+  text-align: center;
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 0 45px rgba(124,58,237,.14);
+}
+
+.login-modal h2 {
+
+  color: white;
+
+  font-size: 32px;
+
+  margin-bottom: 14px;
+}
+
+.login-modal p {
+
+  color:
+    rgba(255,255,255,.58);
+
+  line-height: 1.8;
+
+  margin-bottom: 30px;
+}
+
+.login-modal-actions {
+
+  display: flex;
+
+  gap: 15px;
+}
+
+.cancel-login-btn,
+.go-login-btn {
+
+  flex: 1;
+
+  height: 54px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: .3s;
+}
+
+.cancel-login-btn {
+
+  background:
+    rgba(255,255,255,.05);
+
+  color: white;
+}
+
+.go-login-btn {
+
+  background:
+    linear-gradient(
+      90deg,
+      #7c3aed,
+      #6366f1
+    );
+
+  color: white;
+}
+
+.cancel-login-btn:hover,
+.go-login-btn:hover {
+
+  transform:
+    translateY(-2px);
+}

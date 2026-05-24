@@ -46,10 +46,7 @@ function Hero() {
           </motion.p>
 
           <div className="hero-buttons">
-            <button className="primary-btn">
-              Start Exploring
-            </button>
-
+           
             <Link to="/subjects">
               <button className="secondary-btn">
                 View Subjects

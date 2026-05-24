@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  username  String
+  email     String     @unique
+  password  String
+  verified  Boolean    @default(false)
+  createdAt DateTime   @default(now())
+
+  progress  Progress[]
+  topicProgress TopicProgress[]
+}
+
+model Progress {
+  id         String   @id @default(cuid())
+
+  userId     String
+
+  subjectId  String
+
+  topicName  String
+
+  completed  Boolean  @default(false)
+
+  quizScore  Int      @default(0)
+
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model TopicProgress {
+
+  id String @id @default(cuid())
+
+  userId String
+
+  subjectId String
+
+  topicName String
+
+  aiCompleted Boolean @default(false)
+
+  quizCompleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+}

@@ -1,7 +1,14 @@
 /* =========================
    NAVBAR
 ========================= */
-
+.login-btn,
+.signup-btn,
+.logout-btn {
+  cursor: pointer;
+}
+.nav-auth a {
+  text-decoration: none;
+}
 .navbar {
   position: fixed;
   top: 0;
@@ -123,6 +130,42 @@
   color: white;
 
   cursor: pointer;
+}
+
+.logout-btn {
+  height: 42px;
+
+  padding: 0 22px;
+
+  border: 1px solid rgba(255, 77, 109, 0.25);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 77, 109, 0.08);
+
+  color: #ff4d6d;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background:
+    rgba(255, 77, 109, 0.16);
+
+  border-color:
+    rgba(255, 77, 109, 0.45);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(255,77,109,0.18);
 }
 
 /* =========================

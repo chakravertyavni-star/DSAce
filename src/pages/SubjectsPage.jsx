@@ -1,7 +1,12 @@
 import "../styles/SubjectsPage.css";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
- const subjects = [
+import LoginPrompt
+from "../components/LoginPrompt";
+
+const subjects = [
+
   {
     id: "dsa",
     title: "Data Structures & Algorithms",
@@ -37,57 +42,119 @@ import { Link } from "react-router-dom";
     title: "Artificial Intelligence",
     level: "Advanced",
   },
+
 ];
 
 function SubjectsPage() {
+
+  const navigate =
+    useNavigate();
+
+  const [
+    showLogin,
+    setShowLogin
+  ] =
+    useState(false);
+
+  const token =
+    localStorage.getItem(
+      "token"
+    );
+
   return (
+
     <div className="subjects-page">
 
-      {/* Header */}
+      {/* HEADER */}
+
       <div className="subjects-page-header">
 
-        <p>EXPLORE SUBJECTS</p>
+        <p>
+          EXPLORE SUBJECTS
+        </p>
 
         <h1>
-          Learn Computer Science <br />
+          Learn Computer Science
+          <br />
           Visually
         </h1>
 
       </div>
 
-      {/* Grid */}
+      {/* GRID */}
+
       <div className="subjects-page-grid">
 
-        {subjects.map((subject, index) => (
-          <div className="subjects-page-card" key={index}>
+        {subjects.map(
+          (
+            subject,
+            index
+          ) => (
 
-            <div className="subjects-card-glow"></div>
+            <div
+              className="subjects-page-card"
+              key={index}
+            >
 
-            <span className="subject-level">
-              {subject.level}
-            </span>
+              <div className="subjects-card-glow"></div>
 
-            <h2>{subject.title}</h2>
+              <span className="subject-level">
 
-            <p>
-              Interactive simulations, animations and
-              intuitive visual explanations.
-            </p>
+                {subject.level}
 
-            <Link  to={`/subjects/${subject.id}`}>
+              </span>
 
-                <button>
-                    Explore Subject
-                </button>
+              <h2>
+                {subject.title}
+              </h2>
 
-            </Link>
+              <p>
 
-          </div>
-        ))}
+                Interactive simulations,
+                animations and intuitive
+                visual explanations.
+
+              </p>
+
+              <button
+
+                onClick={() => {
+
+                  if (!token) {
+
+                    setShowLogin(
+                      true
+                    );
+
+                    return;
+                  }
+
+                  navigate(
+                    `/subjects/${subject.id}`
+                  );
+
+                }}
+
+              >
+                Explore Subject
+              </button>
+
+            </div>
+
+          )
+        )}
 
       </div>
 
+      {/* LOGIN MODAL */}
+
+      <LoginPrompt
+        show={showLogin}
+        setShow={setShowLogin}
+      />
+
     </div>
+
   );
 }
 

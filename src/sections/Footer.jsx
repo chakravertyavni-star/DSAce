@@ -25,9 +25,9 @@ function Footer() {
         <div className="footer-links">
 
           <a href="/">Home</a>
-          <a href="/">Subjects</a>
-          <a href="/">Roadmap</a>
-          <a href="/">Visualizer</a>
+          <a href="/subjects">Subjects</a>
+          <a href="/progress">Progress</a>
+          <a href="/roadmap">Roadmap</a>
 
         </div>
 

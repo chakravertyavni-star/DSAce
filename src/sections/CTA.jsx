@@ -20,10 +20,11 @@ function CTA() {
           Learn Computer Science visually through simulations,
           animations and interactive experiences.
         </span>
-
+      <link to="/subjects">
         <button>
           Start Learning Now
         </button>
+      </link>
 
       </div>
 
