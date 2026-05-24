@@ -65,9 +65,10 @@ function Signup() {
     try {
 
       await axios.post(
-        "http://cse-visualizer.onrender.com/api/auth/signup",
+        "https://cse-visualizer.onrender.com/api/auth/signup",
         formData
       );
+
 
       navigate("/login");
 
