@@ -2,9 +2,10 @@ const subjects = [
 
   {
     id: "dsa",
-    title: "DSA",
-    topics: [
+    title: "Data Structures & Algorithms",
+    level: "Intermediate",
 
+    topics: [
       "Arrays",
       "Linked Lists",
       "Stacks",
@@ -15,15 +16,17 @@ const subjects = [
       "Heap",
       "Recursion",
       "Dynamic Programming",
-
     ],
+
+    video: "/video1.mp4",
   },
 
   {
     id: "os",
     title: "Operating Systems",
-    topics: [
+    level: "Advanced",
 
+    topics: [
       "Processes",
       "Threads",
       "CPU Scheduling",
@@ -31,63 +34,72 @@ const subjects = [
       "Paging",
       "Virtual Memory",
       "File Systems",
-
     ],
+
+    video: "/video2.mp4",
   },
 
   {
     id: "dbms",
     title: "DBMS",
-    topics: [
+    level: "Intermediate",
 
+    topics: [
       "SQL",
       "Normalization",
       "Transactions",
       "Indexing",
       "Joins",
       "Keys",
-
     ],
+
+    video: "/video3.mp4",
   },
 
   {
     id: "cn",
     title: "Computer Networks",
-    topics: [
+    level: "Advanced",
 
+    topics: [
       "OSI Model",
       "TCP/IP",
       "Routing",
       "DNS",
       "HTTP",
-
     ],
+
+    video: "/video4.mp4",
   },
 
   {
     id: "oop",
-    title: "OOP",
-    topics: [
+    title: "Object Oriented Programming",
+    level: "Beginner",
 
+    topics: [
       "Classes",
       "Inheritance",
       "Polymorphism",
       "Abstraction",
-
     ],
+
+    video: "/video5.mp4",
   },
 
   {
     id: "ai",
-    title: "AI",
-    topics: [
+    title: "Artificial Intelligence",
+    level: "Advanced",
 
+    topics: [
       "Machine Learning",
       "Neural Networks",
       "Deep Learning",
       "Generative AI",
-
     ],
+
+    video: "/ai.mp4",
   },
 
 ];
