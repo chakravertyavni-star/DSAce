@@ -36,7 +36,7 @@ function Navbar() {
         {/* LOGO */}
 
         <h1 className="logo">
-          Spro<span>uza</span>
+          DSA<span>CE</span>
         </h1>
 
         {/* LINKS */}
