@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-top">
 
         <h2>
-          Spro<span>uza</span>
+          DSA<span>ce</span>
         </h2>
 
         <p>
