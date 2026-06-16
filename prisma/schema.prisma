@@ -56,3 +56,10 @@ model TopicProgress {
   user User @relation(fields: [userId], references: [id])
 
 }
+
+model TopicExplanation {
+  id          Int      @id @default(autoincrement())
+  topic       String   @unique
+  explanation String   @db.Text
+  createdAt   DateTime @default(now())
+}

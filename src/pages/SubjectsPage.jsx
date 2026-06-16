@@ -2,151 +2,76 @@ import "../styles/SubjectsPage.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import LoginPrompt
-from "../components/LoginPrompt";
+import subjects from "../data/subjectsData";
+import LoginPrompt from "../components/LoginPrompt";
 
-const subjects = [
-
-  {
-    id: "dsa",
-    title: "Data Structures & Algorithms",
-    level: "Intermediate",
-  },
-
-  {
-    id: "os",
-    title: "Operating Systems",
-    level: "Advanced",
-  },
-
-  {
-    id: "dbms",
-    title: "DBMS",
-    level: "Intermediate",
-  },
-
-  {
-    id: "cn",
-    title: "Computer Networks",
-    level: "Advanced",
-  },
-
-  {
-    id: "oop",
-    title: "Object Oriented Programming",
-    level: "Beginner",
-  },
-
-  {
-    id: "ai",
-    title: "Artificial Intelligence",
-    level: "Advanced",
-  },
-
-];
+const dsa = subjects[0];
 
 function SubjectsPage() {
+  const navigate = useNavigate();
+  const [showLogin, setShowLogin] = useState(false);
 
-  const navigate =
-    useNavigate();
+  const token = localStorage.getItem("token");
 
-  const [
-    showLogin,
-    setShowLogin
-  ] =
-    useState(false);
+  const handleStart = () => {
+    if (!token) {
+      setShowLogin(true);
+      return;
+    }
 
-  const token =
-    localStorage.getItem(
-      "token"
-    );
+    navigate(`/subjects/${dsa.id}`);
+  };
 
   return (
-
     <div className="subjects-page">
-
-      {/* HEADER */}
 
       <div className="subjects-page-header">
 
         <p>
-          EXPLORE SUBJECTS
+          DSA CURRICULUM
         </p>
 
         <h1>
-          Learn Computer Science
+          Master Data Structures
           <br />
-          Visually
+          & Algorithms Visually
         </h1>
 
       </div>
 
-      {/* GRID */}
-
       <div className="subjects-page-grid">
 
-        {subjects.map(
-          (
-            subject,
-            index
-          ) => (
+        <div className="subjects-page-card">
 
-            <div
-              className="subjects-page-card"
-              key={index}
-            >
+          <div className="subjects-card-glow"></div>
 
-              <div className="subjects-card-glow"></div>
+          <span className="subject-level">
+            {dsa.level}
+          </span>
 
-              <span className="subject-level">
+          <h2>
+            {dsa.title}
+          </h2>
 
-                {subject.level}
+          <p>
+            {dsa.topics.length} topics — from fundamentals to advanced
+            problem-solving, with interactive simulations and visual
+            explanations at every step.
+          </p>
 
-              </span>
+          <ul className="dsa-topic-preview">
+            {dsa.topics.map((topic) => (
+              <li key={topic}>{topic}</li>
+            ))}
+          </ul>
 
-              <h2>
-                {subject.title}
-              </h2>
+          <button onClick={handleStart}>
+            Start DSA Journey
+          </button>
 
-              <p>
-
-                Interactive simulations,
-                animations and intuitive
-                visual explanations.
-
-              </p>
-
-              <button
-
-                onClick={() => {
-
-                  if (!token) {
-
-                    setShowLogin(
-                      true
-                    );
-
-                    return;
-                  }
-
-                  navigate(
-                    `/subjects/${subject.id}`
-                  );
-
-                }}
-
-              >
-                Explore Subject
-              </button>
-
-            </div>
-
-          )
-        )}
+        </div>
 
       </div>
-
-      {/* LOGIN MODAL */}
 
       <LoginPrompt
         show={showLogin}
@@ -154,7 +79,6 @@ function SubjectsPage() {
       />
 
     </div>
-
   );
 }
 

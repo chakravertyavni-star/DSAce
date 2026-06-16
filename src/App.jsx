@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 
 import Navbar from "./sections/Navbar";
+import AssetPreloader from "./components/AssetPreloader";
 
 import ProtectedRoute
 from "./components/ProtectedRoute";
@@ -17,6 +18,7 @@ import TopicHub from "./pages/TopicHub";
 import AILearnPage from "./pages/AILearnPage";
 import QuizPage from "./pages/QuizPage";
 import ProgressPage from "./pages/ProgressPage";
+import Roadmap from "./sections/Roadmap";
 
 function App() {
 
@@ -24,6 +26,7 @@ function App() {
 
     <>
 
+      <AssetPreloader />
       <Navbar />
 
       <Routes>
@@ -97,6 +100,15 @@ function App() {
           element={
             <ProtectedRoute>
               <ProgressPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/roadmap"
+          element={
+            <ProtectedRoute>
+              <Roadmap />
             </ProtectedRoute>
           }
         />

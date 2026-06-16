@@ -19,7 +19,7 @@ function Signup() {
     const token = localStorage.getItem("token");
 
     if (token) {
-      navigate("/subjects");
+      navigate("/subjects/dsa");
     }
 
   }, []);

@@ -15,7 +15,7 @@ function Login() {
     const token = localStorage.getItem("token");
 
     if (token) {
-      navigate("/subjects");
+      navigate("/subjects/dsa");
     }
 
   }, []);
@@ -57,7 +57,7 @@ function Login() {
         JSON.stringify(res.data.user)
       );
 
-      navigate("/subjects");
+      navigate("/subjects/dsa");
 
     } catch (error) {
 

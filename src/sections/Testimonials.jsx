@@ -4,19 +4,19 @@ const testimonials = [
   {
     name: "Arjun",
     role: "2nd Year CSE",
-    text: "Finally understood recursion after struggling for months.",
+    text: "Finally understood recursion and tree traversals after struggling for months.",
   },
 
   {
     name: "Kritika",
     role: "3rd Year CSE",
-    text: "Operating Systems finally feels visual instead of theoretical.",
+    text: "Dynamic programming finally clicked — the visualizations made all the difference.",
   },
 
   {
     name: "Rohan",
     role: "1st Year CSE",
-    text: "This makes learning Computer Science genuinely addictive.",
+    text: "This makes learning DSA genuinely addictive. Graphs used to scare me.",
   },
 ];
 
@@ -29,7 +29,7 @@ function Testimonials() {
         <p>LOVED BY STUDENTS</p>
 
         <h2>
-          Finally, CSE <br />
+          Finally, DSA <br />
           Makes Sense.
         </h2>
 

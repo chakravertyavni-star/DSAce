@@ -10,6 +10,7 @@ import axios from "axios";
 import "../styles/SubjectDetail.css";
 
 import subjects from "../data/subjectsData";
+import { preloadVideo } from "../utils/preloadAssets";
 
 function SubjectDetail() {
 
@@ -46,7 +47,11 @@ function SubjectDetail() {
 
     fetchProgress();
 
-  }, [subjectId]);
+    if (video) {
+      preloadVideo(video);
+    }
+
+  }, [subjectId, video]);
 
   const fetchProgress =
     async () => {
@@ -210,6 +215,7 @@ function SubjectDetail() {
         muted
         loop
         playsInline
+        preload="auto"
         className="subject-video-bg"
       >
 

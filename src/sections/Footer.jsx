@@ -11,7 +11,7 @@ function Footer() {
         </h2>
 
         <p>
-          The interactive way to master Computer Science.
+          The interactive way to master Data Structures & Algorithms.
         </p>
 
       </div>
@@ -19,15 +19,15 @@ function Footer() {
       <div className="footer-bottom">
 
         <span>
-          © 2026 CSE.Visualized
+          © 2026 DSAce
         </span>
 
         <div className="footer-links">
 
           <a href="/">Home</a>
-          <a href="/subjects">Subjects</a>
+          <a href="/subjects">Curriculum</a>
           <a href="/progress">Progress</a>
-          <a href="/roadmap">Roadmap</a>
+          <a href="/subjects/dsa">Roadmap</a>
 
         </div>
 

@@ -6,6 +6,7 @@ import Testimonials from "../sections/Testimonials";
 import Roadmap from "../sections/Roadmap";
 import CTA from "../sections/CTA";
 import Footer from "../sections/Footer";
+ 
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <Subjects />
       
       <Testimonials />
+
      
       <CTA />
       <Footer />

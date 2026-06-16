@@ -3,7 +3,7 @@ import "../styles/Preview.css";
 const previews = [
   {
     title: "Sorting Visualizer",
-    desc: "Watch algorithms sort data in real-time.",
+    desc: "Watch bubble, merge, and quick sort in real-time.",
   },
 
   {
@@ -12,13 +12,13 @@ const previews = [
   },
 
   {
-    title: "OS Scheduler",
-    desc: "Understand CPU scheduling through simulation.",
+    title: "Graph Traversal",
+    desc: "Visualize BFS and DFS step by step on any graph.",
   },
 
   {
-    title: "Network Simulator",
-    desc: "Visualize packets and routing live.",
+    title: "Tree Visualizer",
+    desc: "Explore BST operations, rotations, and traversals live.",
   },
 ];
 

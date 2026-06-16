@@ -39,11 +39,11 @@
 .subjects-page-grid {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
 
   gap: 2rem;
 
-  max-width: 1500px;
+  max-width: 720px;
   margin: auto;
 }
 
@@ -128,10 +128,34 @@
 
   line-height: 1.7;
 
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   position: relative;
   z-index: 10;
+}
+
+.dsa-topic-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+
+  position: relative;
+  z-index: 10;
+}
+
+.dsa-topic-preview li {
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  color: rgba(255,255,255,0.75);
+  font-size: 0.85rem;
 }
 
 /* Button */

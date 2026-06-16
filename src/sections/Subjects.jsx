@@ -74,7 +74,7 @@ function Subjects() {
       <div className="sticky-box">
 
         <p className="subtitle">
-          Explore the future of learning
+          Your DSA learning path
         </p>
 
         <h1
@@ -84,7 +84,7 @@ function Subjects() {
             opacity: step1,
           }}
         >
-          Data Structures
+          Arrays & Linked Lists
         </h1>
 
         {step1 > 0.98 && (
@@ -95,7 +95,7 @@ function Subjects() {
               opacity: step2,
             }}
           >
-            Operating Systems
+            Trees & Graphs
           </h1>
         )}
 
@@ -107,7 +107,7 @@ function Subjects() {
               opacity: step3,
             }}
           >
-            Artificial Intelligence
+            Dynamic Programming
           </h1>
         )}
 

@@ -1,22 +1,28 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
- 
+
+import { FiMaximize2 } from "react-icons/fi";
+
 import "../styles/AILearnPage.css";
 
 function AILearnPage() {
 
+  const [explanation,setExplanation]= useState("");
+
+const [loading,setLoading]=useState(true);
+
   const {
     subjectId,
-    topicName,
+    topicName
   } = useParams();
 
   const navigate = useNavigate();
 
+  const visualRef = useRef(null);
+
   const [completed, setCompleted] =
     useState(false);
-
-  /* TEMP DEBUG */
 
   const handleComplete = async () => {
 
@@ -26,6 +32,28 @@ function AILearnPage() {
 
   };
 
+  const handleFullscreen = async () => {
+
+  try {
+
+    if (!document.fullscreenElement) {
+
+      await visualRef.current.requestFullscreen();
+
+    } else {
+
+      await document.exitFullscreen();
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+  }
+
+};
+
   return (
 
     <div className="ai-page">
@@ -33,8 +61,6 @@ function AILearnPage() {
       <div className="ai-overlay"></div>
 
       <div className="ai-container">
-
-        {/* LEFT */}
 
         <div className="ai-left">
 
@@ -60,67 +86,99 @@ function AILearnPage() {
               This section will contain
               AI-generated explanations,
               visual understanding,
-              simplified concepts and
-              intuitive learning flows.
-
-              Learn deeply before moving
-              to assessment.
+              simplified concepts,
+              real-world analogies,
+              and intuitive learning
+              flows designed specifically
+              for mastering Data Structures
+              and Algorithms.
             </p>
 
             <div className="ai-points">
 
               <div>
-                ✓ Visual explanation
+                ✓ AI Generated Explanation
               </div>
 
               <div>
-                ✓ Real-world analogy
+                ✓ Visual Learning
               </div>
 
               <div>
-                ✓ Concept clarity
+                ✓ Real-world Analogies
               </div>
 
               <div>
-                ✓ Guided learning
+                ✓ Concept Mastery
               </div>
 
             </div>
 
-          </div>
+            {/* VISUAL SPACE */}
 
-        </div>
+            <div
+              className="video-shell"
+              ref={visualRef}
+            >
 
-        {/* RIGHT */}
+              <div className="video-glow"></div>
 
-        <div className="ai-right">
-
-          <div className="video-shell">
-
-            <div className="video-glow"></div>
-
-            <div className="video-placeholder">
-
-              <div className="video-motivation">
-
-                <span>
-                  “Understanding today
-                  creates confidence
-                  tomorrow.”
-                </span>
-
+              <div
+                className="fullscreen-btn"
+                onClick={handleFullscreen}
+              >
+                <FiMaximize2 />
               </div>
 
-              <h2>
-                AI Visual Space
-              </h2>
+              <div className="video-placeholder">
 
-              <p>
-                Future AI videos,
-                simulations and dynamic
-                explanations will
-                appear here.
-              </p>
+                <div className="video-motivation">
+
+                  <span>
+                    “Understanding today
+                    creates confidence
+                    tomorrow.”
+                  </span>
+
+                </div>
+
+                <h2>
+                  AI Visual Space
+                </h2>
+
+                <p>
+                  Future AI videos,
+                  simulations,
+                  animated BFS/DFS,
+                  tree traversals,
+                  graph visualizations
+                  and dynamic explanations
+                  will appear here.
+                </p>
+
+                {/* DEMO VISUAL */}
+
+                <div className="visual-demo">
+
+                  <div className="visual-node">
+                    A
+                  </div>
+
+                  <div className="visual-node">
+                    B
+                  </div>
+
+                  <div className="visual-node">
+                    C
+                  </div>
+
+                  <div className="visual-node">
+                    D
+                  </div>
+
+                </div>
+
+              </div>
 
             </div>
 
@@ -129,8 +187,6 @@ function AILearnPage() {
         </div>
 
       </div>
-
-      {/* FOOTER */}
 
       <div className="ai-footer">
 
@@ -145,48 +201,52 @@ function AILearnPage() {
         ) : (
 
           <button
-        onClick={async () => {
 
-            const token =
+            onClick={async () => {
+
+              const token =
                 localStorage.getItem(
-                "token"
+                  "token"
                 );
 
-            await axios.post(
+              await axios.post(
 
                 "https://cse-visualizer.onrender.com/api/topic-progress/update",
 
                 {
 
-                subjectId,
-                topicName:
+                  subjectId,
+
+                  topicName:
                     decodeURIComponent(
-                    topicName
+                      topicName
                     ),
-                mode: "ai",
+
+                  mode: "ai",
 
                 },
 
                 {
 
-                headers: {
+                  headers: {
 
                     Authorization:
-                    `Bearer ${token}`
+                      `Bearer ${token}`
+
+                  }
 
                 }
 
-                }
+              );
 
-            );
-
-            navigate(
+              navigate(
 
                 `/quiz/${subjectId}/${encodeURIComponent(topicName)}`
 
-            );
+              );
 
-        }}
+            }}
+
           >
             Proceed to Quiz →
           </button>
@@ -198,6 +258,7 @@ function AILearnPage() {
     </div>
 
   );
+
 }
 
 export default AILearnPage;

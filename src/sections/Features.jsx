@@ -13,18 +13,17 @@ function Features() {
 
       <div className="features-header">
 
-        <p>WHY THIS PLATFORM IS DIFFERENT</p>
+        <p>WHY DSAce IS DIFFERENT</p>
 
         <h2>
           Not Just Notes. <br />
-          Experience Concepts.
+          Experience DSA Concepts.
         </h2>
 
       </div>
 
       <div className="features-grid">
 
-        {/* Card 1 */}
         <div className="feature-card">
 
           <div className="feature-icon">
@@ -34,13 +33,12 @@ function Features() {
           <h3>Visual Learning</h3>
 
           <p>
-            Understand difficult concepts through animations,
-            simulations and interactive visuals.
+            Understand trees, graphs, and recursion through animations,
+            simulations, and interactive visuals.
           </p>
 
         </div>
 
-        {/* Card 2 */}
         <div className="feature-card">
 
           <div className="feature-icon">
@@ -50,13 +48,12 @@ function Features() {
           <h3>Interactive Simulations</h3>
 
           <p>
-            Watch Operating Systems, Networks and Algorithms
-            work in real-time.
+            Watch sorting algorithms, graph traversals, and dynamic
+            programming unfold in real-time.
           </p>
 
         </div>
 
-        {/* Card 3 */}
         <div className="feature-card">
 
           <div className="feature-icon">
@@ -66,13 +63,12 @@ function Features() {
           <h3>Gamified Experience</h3>
 
           <p>
-            Learn through challenges, progression,
-            streaks and visual rewards.
+            Progress through DSA topics with quizzes, streaks,
+            and visual rewards.
           </p>
 
         </div>
 
-        {/* Card 4 */}
         <div className="feature-card">
 
           <div className="feature-icon">
@@ -82,8 +78,8 @@ function Features() {
           <h3>Real Understanding</h3>
 
           <p>
-            Focus on intuition and understanding —
-            not memorization.
+            Build intuition for data structures and algorithms —
+            not just memorization.
           </p>
 
         </div>

@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import progressRoutes from "./routes/progressRoutes.js";
 import topicProgressRoutes from "./routes/topicProgressRoutes.js";
-
+import aiRoutes from "./routes/aiRoutes.js";
 
 
 
@@ -18,6 +18,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/topic-progress",topicProgressRoutes);
+app.use("/api/ai",aiRoutes);
 
 
 app.get("/", (req, res) => {
